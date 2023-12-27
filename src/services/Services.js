@@ -24,7 +24,7 @@ const requests ={
 let email = "";
 const storeData = JSON.parse(localStorage.getItem("account"));
 if(storeData){
-    const userDataString = storeData.state && storeData.state.signedInUserData && storeData.state.signedInUserData[0];
+    const userDataString = storeData.state && storeData.state.signedInUserData && storeData.state.signedInUserData;
     email = userDataString?.data?.users?.email;
 }
 

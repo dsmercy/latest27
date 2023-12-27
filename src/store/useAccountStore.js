@@ -4,12 +4,13 @@ import { devtools, persist } from 'zustand/middleware';
 
 const useAccountStore = create(persist(devtools((set) => ({
     signedInUserData: null,
+    jobSeekerData: null,
     signInUser: async (data) => {
         try {
             const userDetail = await Services.Account.userlogin(data);
             if (userDetail) {
                 set((state) => ({
-                    signedInUserData: [userDetail, state.signedInUserData], 
+                    signedInUserData: userDetail, 
                 }));
             }
             return userDetail;
@@ -17,11 +18,11 @@ const useAccountStore = create(persist(devtools((set) => ({
             return Promise.reject({ error: error.data });
         }
     },
-    getJobSeeker: async (data) => {
+    getJobSeeker: () => {
         try {
-            const userDetail = await Services.Account.userlogin(data);
-            set((state) => ({
-                signedInUserData: [userDetail, state.signedInUserData], 
+            const userDetail = Services.Account.getJobSeeker();
+            set(() => ({
+                jobSeekerData: userDetail, 
             }));
         } catch (error) {
             return Promise.reject({ error: error.data });

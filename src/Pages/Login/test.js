@@ -89,7 +89,7 @@ console.log('signedInUserData',signedInUserData);
             <div className="log">
               {signedInUserData ?
                 <NavLink className="nav-link" to="/login">
-                  {signedInUserData[0].data?.users?.firstName}
+                  {signedInUserData.data?.users?.firstName}
                 </NavLink> :
                 <>
                   <NavLink className="nav-link" to="/login">

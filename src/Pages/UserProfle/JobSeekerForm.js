@@ -26,7 +26,7 @@ const JobSeekerForm = () => {
 
 const handleAutoFill =()=>{
   //  const email= "akshay@yopmail.com"
-  Services.Account.getJobSeeker(email).then(response=>{
+  Services.Account.getJobSeeker().then(response=>{
     console.log(response);
     setData(response.data)
 

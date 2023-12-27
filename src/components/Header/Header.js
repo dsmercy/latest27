@@ -101,14 +101,14 @@ const handleChangePassword=()=>{
             {signedInUserData ?
             <>
                 <NavLink className="nav-link" to="/login">
-                  <NavDropdown title={signedInUserData[0].data?.users?.firstName} id="basic-nav-dropdown">
+                  <NavDropdown title={signedInUserData.data?.users?.firstName} id="basic-nav-dropdown">
               <NavDropdown.Item onClick={handleChange}>Profile</NavDropdown.Item> <NavDropdown.Divider />
               <NavDropdown.Item onClick={handleChangePassword}>Change Password</NavDropdown.Item> <NavDropdown.Divider />
               <NavDropdown.Item  onClick={signOut}>Logout</NavDropdown.Item>
               {/* <button className="nav-link reg" >
                 Logout
                   </button> */}
-                  {/* {signedInUserData[0].data?.users?.firstName} */}
+                  {/* {signedInUserData.data?.users?.firstName} */}
                   </NavDropdown>
                 </NavLink></> :
                 <>

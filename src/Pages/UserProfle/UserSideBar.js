@@ -31,7 +31,7 @@ const completeProfile=()=>{
                     <img src={leftImg} alt="image" />
                   </Col>
                   <Col>
-                    <h4>{signedInUserData[0].data?.users?.firstName} {signedInUserData[0].data?.users?.lastName}</h4>
+                    <h4>{signedInUserData && signedInUserData.data?.users?.firstName} {signedInUserData && signedInUserData.data?.users?.lastName}</h4>
                     <p>UI/UX Developer</p>
                   </Col>
                 </Row>
