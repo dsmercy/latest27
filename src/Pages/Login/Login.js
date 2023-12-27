@@ -89,12 +89,13 @@ const finalOtp= `${otpValue?.otp1}${otpValue?.otp2}${otpValue?.otp3}${otpValue?.
     
     await signInUser(data).then((response) => {
         if (response?.data?.accessToken) {
+          getJobSeeker();
           navigate(`/userdashboard`);
           localStorage.setItem("token", response.data.accessToken);
           toast.success(response.message, {
             position: toast.POSITION.TOP_RIGHT,
           });
-         getJobSeeker();
+          
         }
       })
       .catch((errors) => {

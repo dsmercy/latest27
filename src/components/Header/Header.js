@@ -51,35 +51,15 @@ const handleChangePassword=()=>{
               </li>
               <li className="nav-item dropdown">
                 <NavLink
-                  className="nav-link dropdown-toggle"
+                  className="nav-link"
                   to="#"
-                  id="navbarDropdownMenuLink"
                   role="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
                   Employers
                 </NavLink>
-                <ul
-                  className="dropdown-menu"
-                  aria-labelledby="navbarDropdownMenuLink"
-                >
-                  <li>
-                    <NavLink className="dropdown-item" to="#">
-                      Action
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink className="dropdown-item" to="#">
-                      Another action
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink className="dropdown-item" to="#">
-                      Something else here
-                    </NavLink>
-                  </li>
-                </ul>
+                
               </li>
               <li className="nav-item">
                 <NavLink className="nav-link" to="#">
@@ -101,14 +81,14 @@ const handleChangePassword=()=>{
             {signedInUserData ?
             <>
                 <NavLink className="nav-link" to="/login">
-                  <NavDropdown title={signedInUserData.data?.users?.firstName} id="basic-nav-dropdown">
+                <NavDropdown title={signedInUserData.data?.users?.firstName} id="basic-nav-dropdown">
               <NavDropdown.Item onClick={handleChange}>Profile</NavDropdown.Item> <NavDropdown.Divider />
               <NavDropdown.Item onClick={handleChangePassword}>Change Password</NavDropdown.Item> <NavDropdown.Divider />
               <NavDropdown.Item  onClick={signOut}>Logout</NavDropdown.Item>
               {/* <button className="nav-link reg" >
                 Logout
                   </button> */}
-                  {/* {signedInUserData.data?.users?.firstName} */}
+                  {/* {signedInUserData[0].data?.users?.firstName} */}
                   </NavDropdown>
                 </NavLink></> :
                 <>

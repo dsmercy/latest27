@@ -8,16 +8,14 @@ import { useNavigate } from "react-router-dom";
 import useAccountStore from "../../store/useAccountStore";
 
 export const UserSideBar = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const now = 60;
 
   const signedInUserData = useAccountStore((state) => state.signedInUserData);
 
-const completeProfile=()=>{
-  navigate(`/job-seeker-profile`);
-}
-
-
+  const completeProfile = () => {
+    navigate(`/job-seeker-profile`);
+  };
 
   return (
     <>
@@ -31,7 +29,7 @@ const completeProfile=()=>{
                     <img src={leftImg} alt="image" />
                   </Col>
                   <Col>
-                    <h4>{signedInUserData && signedInUserData.data?.users?.firstName} {signedInUserData && signedInUserData.data?.users?.lastName}</h4>
+                  <h4>{signedInUserData && signedInUserData.data?.users?.firstName} {signedInUserData && signedInUserData.data?.users?.lastName}</h4>
                     <p>UI/UX Developer</p>
                   </Col>
                 </Row>
@@ -58,7 +56,9 @@ const completeProfile=()=>{
                   recruiter
                 </p>
                 <div className="complete-profile">
-                  <Button variant="" onClick={completeProfile}>Complete Profile</Button>
+                  <Button variant="" onClick={completeProfile}>
+                    Complete Profile
+                  </Button>
                 </div>
               </div>
 
@@ -142,7 +142,7 @@ const completeProfile=()=>{
                 </Col>
               </Row>
 
-              <UserProfileBody/>
+              <UserProfileBody />
             </div>
           </Col>
         </Row>

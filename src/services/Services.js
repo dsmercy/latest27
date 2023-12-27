@@ -37,12 +37,22 @@ const Account ={
     changePassword:(values)=>requests.post(`Account/ChangePassword`, (values)),
     getJobSeeker: ()=>requests.get(`Account/GetUser?emailid=${email}`),
     getRole: (value)=>requests.get('Account/GetRoles',(value)),
-
     // getUser: () => requests.get(`getuser?emailid=${email}`),
 }
 
+const Profile={
+    getDegree: ()=>requests.get('Master/GetDegreeList'),
+    getFieldOfStudyList: ()=>requests.get('Master/GetFieldOfStudyList'),
+    getUniversity: ()=>requests.get('Master/GetUniversityList'),
+    getComplitionYear: ()=>requests.get('Master/GetYearOfComplitionList'),
+    getSkills: ()=>requests.get('Master/GetSkillList'),
+    setJobSeekerDetails:(values)=>requests.post('JobSeeker/PostJobSeekerDetails',(values)),
+    setJobSeekerSkills:(values)=>requests.post('JobSeeker/PostJobSeekerSkill',(values))
+}
+
 const Services = {
-    Account
+    Account,
+    Profile
 }
 
 

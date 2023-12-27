@@ -18,11 +18,11 @@ const useAccountStore = create(persist(devtools((set) => ({
             return Promise.reject({ error: error.data });
         }
     },
-    getJobSeeker: async () => {
+    getJobSeeker: async() => {
         try {
             const userDetail = await Services.Account.getJobSeeker();
             set(() => ({
-                jobSeekerData: userDetail, 
+                jobSeekerData: userDetail 
             }));
         } catch (error) {
             return Promise.reject({ error: error.data });

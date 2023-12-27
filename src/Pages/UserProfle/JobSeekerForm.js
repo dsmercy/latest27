@@ -16,13 +16,24 @@ import {  useParams } from "react-router-dom";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useAccountStore from '../../store/useAccountStore';
+import Button from "react-bootstrap/Button";
+
 
 const JobSeekerForm = () => {
-
 
   const [validated, setValidated] = useState(false);
   const {email} = useParams();
   const [data, setData] = useState('');
+  const[degree,setDegree]=useState([]);
+  const[study,setStudy]=useState([]);
+  const[university,setUniversity]=useState([]);
+  const[year,setYear]=useState([]);
+  const[skills,setSkills]=useState([]);
+  const [degreeName, setDegreeName]=useState('');
+  const [fieldOfStudy,setFieldOfStudy]=useState('');
+  const[universityName,setUniversityName]=useState('');
+  const[yearOfCompletion,setYearOfCompletion]=useState('')
+
   const jobSeekerData = useAccountStore((state) => state.jobSeekerData);
 
   const defaultValues = {
@@ -35,6 +46,63 @@ const JobSeekerForm = () => {
   };
 
   const {register,formState: { errors },handleSubmit} = useForm({ defaultValues, mode: 'all' });
+
+
+
+  useEffect(() => {
+    getDegree();
+    getStudy();
+    getUniversity();
+    getYear();
+    getSkills();
+  }, []);
+
+  // useEffect(() => {
+  //   handleAutoFill();
+  // }, []);
+
+const getDegree=()=>{
+  Services.Profile.getDegree().then((response)=>{
+       setDegree(response.data);
+  }).catch((errors)=>{
+    console.log (errors);
+  })
+}
+
+const getStudy=()=>{
+  Services.Profile.getFieldOfStudyList().then((response)=>{
+    setStudy(response.data);
+  }).catch((errors)=>{
+    console.log (errors);
+  })
+}
+
+const getUniversity=()=>{
+  Services.Profile.getUniversity().then((response)=>{
+    setUniversity(response.data);
+  }).catch((errors)=>{
+    console.log (errors);
+  })
+}
+
+const getYear=()=>{
+  Services.Profile.getComplitionYear().then((response)=>{
+    setYear(response?.data);
+    }).catch((errors)=>{
+    console.log (errors);
+  })
+}
+
+const getSkills=()=>{
+  Services.Profile.getSkills().then((response)=>{
+    setSkills(response?.data);
+    }).catch((errors)=>{
+    console.log (errors);
+  })
+}
+
+
+
 
 const handleComplete = (data) => {
   // console.log("Form completed!", data);
@@ -51,6 +119,19 @@ const handleComplete = (data) => {
       // console.log("prevIndex", prevIndex);
       // console.log("nextIndex", nextIndex);
     };
+const body =[{
+  degreeName: degreeName,
+  fieldOfStudy: fieldOfStudy,
+  clgName: universityName,
+  yearofCompletion: yearOfCompletion
+}]
+
+console.log("body", body)
+    const handleEductaion=()=>{
+      Services.Profile.setJobSeekerDetails(body).then((response)=>{
+        console.log(response)
+      }).catch((errors)=>console.log(errors))
+    }
 
    return (
   <>
@@ -217,67 +298,89 @@ const handleComplete = (data) => {
 
         <Row>
             <Col>
-
             <FormLabel>Degree  <span className='text-danger'>*</span></FormLabel>
-            <Form.Select aria-label="Default select example" className='mb-3'>
-           <option>Open this select menu </option>
-          <option value="1">BCA</option>
-          <option value="2">MCA</option>
-         <option value="3">BTech</option>
+            <Form.Select aria-label="Default select example" className='mb-3' {...register("degreeName", { required: true })}
+                    isInvalid={!!errors.degreeName}
+                    onChange={(e)=>setDegreeName(e.target.value)}>
+           <option value="">Open this select menu </option>
+           {degree?.map((item)=>(
+            <option value={item?.degreeName} key={item?.id}>{item?.degreeName}</option>
+           ))}
           </Form.Select>
+          <Form.Control.Feedback type="invalid">
+                    Please select a degree.
+                  </Form.Control.Feedback>
             </Col>
-            
-     
           </Row>
 
           
         <Row>
             <Col>
-
             <FormLabel>Field of study  <span className='text-danger'>*</span></FormLabel>
-            <Form.Select aria-label="Default select example" className='mb-3'>
-           <option>Open this select menu </option>
-          <option value="1">Computer</option>
-          <option value="2">Computer Science</option>
-         <option value="3">BTech</option>
+            <Form.Select aria-label="Default select example" className='mb-3' {...register("fieldOfStudy", { required: true })}
+                    isInvalid={!!errors.fieldOfStudy}
+                    onChange={(e)=>setFieldOfStudy(e.target.value)}>
+           <option value=''>Open this select menu </option>
+           {study.map((item)=>(
+            <option value={item.fieldOfStudy} key={item.id}>{item.fieldOfStudy}</option>
+           ))}
           </Form.Select>
+          <Form.Control.Feedback type="invalid">
+                    Please select field of study.
+                  </Form.Control.Feedback>
             </Col>
-            
-     
-          </Row>
+            </Row>
 
           <Row>
             <Col>
-
             <FormLabel>School/University  <span className='text-danger'>*</span></FormLabel>
-            <Form.Select aria-label="Default select example" className='mb-3'>
-           <option>Open this select menu </option>
-          <option value="1">Computer</option>
-          <option value="2">Computer Science</option>
-         <option value="3">BTech</option>
+            <Form.Select aria-label="Default select example" className='mb-3' {...register("universityName", { required: true })}
+                    isInvalid={!!errors.universityName}
+                    onChange={(e)=>setUniversityName(e.target.value)}>
+           <option value="">Open this select menu </option>
+           {university?.map((item)=>(
+            <option value={item.university} key={item.id}>{item.university}</option>
+           ))}
           </Form.Select>
+          <Form.Control.Feedback type="invalid">
+                    Please select field of School/University.
+                  </Form.Control.Feedback>
             </Col>
-            
-     
-          </Row>
+            </Row>
 
           <Row>
             <Col>
-
-            <FormLabel>Year of Completion   <span className='text-danger'>*</span></FormLabel>
-            <Form.Select aria-label="Default select example" className='mb-3'>
-           <option>Open this select menu </option>
-          <option value="1">Computer</option>
-          <option value="2">Computer Science</option>
-         <option value="3">BTech</option>
+            <FormLabel>Year of Completion<span className='text-danger'>*</span></FormLabel>
+            <Form.Select aria-label="Default select example" className='mb-3' {...register("yearOfCompletion", { required: true })}
+                    isInvalid={!!errors.yearOfCompletion}
+                      onChange={(e)=>setYearOfCompletion(e.target.value)}>
+           <option value=''>Open this select menu </option>
+           {year.map((item,index)=>(
+            <option value={item.yearOfCompletion} key={item.index}>{item.yearOfCompletion}</option>
+           ))}
           </Form.Select>
+          <Form.Control.Feedback type="invalid">
+                    Please select Year of Completion.
+                  </Form.Control.Feedback>
             </Col>
-            
-     
-          </Row>
-          <div className='add-position'>
-      <h4><i className="fa fa-plus-circle"></i> Add Education Or Certification</h4>
+           </Row>
+
+          <div className='add-position' onClick={handleEductaion}>
+      <h4><i className="fa fa-plus-circle"></i> Add Education</h4>
     </div>
+    
+          <Row>
+          <Col>
+          <FormLabel>Skills  <span className='text-danger'>*</span></FormLabel>
+          <Form.Select aria-label="Default select example" className='mb-3' {...register("skillName", { required: true })}
+                    isInvalid={!!errors.skillName} >
+          <option>Open this select menu </option>
+          {skills?.map((item)=>(
+            <option value={item.skillName} key={item.id}>{item.skillName}</option>
+          ))}
+          </Form.Select>
+          </Col>
+          </Row>
 
       </FormWizard.TabContent>
       
@@ -349,15 +452,8 @@ const handleComplete = (data) => {
 
           <FormLabel>Skill Used <span className='text-danger'>*</span></FormLabel>
           <InputGroup className="mb-3">
-  
-      <Form.Control
-        type="text"
-        placeholder=""
-        aria-label="Username"
-        aria-describedby="basic-addon1"
-   
-      />
-    </InputGroup>
+            <Form.Control type="text"  placeholder="" aria-label="Username" aria-describedby="basic-addon1" /> 
+          </InputGroup>
 
     <FormLabel>Job Description</FormLabel>
     <FloatingLabel controlId="floatingTextarea2" label="Comments">
@@ -381,10 +477,6 @@ const handleComplete = (data) => {
       
         </div>
        
- 
-       
-      
-
       </FormWizard.TabContent>
 
       <FormWizard.TabContent title="Job Preference" icon="fa fa-check">
@@ -399,8 +491,7 @@ const handleComplete = (data) => {
         placeholder=""
         aria-label="Username"
         aria-describedby="basic-addon1"
-   
-      />
+        />
     </InputGroup>
 
 
@@ -422,12 +513,8 @@ const handleComplete = (data) => {
       <input className='form-check-input' type='radio' id='temp' name="job-type" /><label for='temp'>Monthly</label>
       <input className='form-check-input' type='radio' id='both' name="job-type" /><label for='both'>Annually </label>
     </div>  
-
-
-      
-      </FormWizard.TabContent>
-
-    </FormWizard>
+   </FormWizard.TabContent>
+  </FormWizard>
     </Form>
     </div>
     </Col>

@@ -24,14 +24,23 @@ const ChangePassword = () => {
   } = useForm({ mode: "all" });
 
   const handleFormSubmit = async () => {
+    console.log("First");
+    console.log("Old Password", oldPassword);
+    console.log("newPassword", newPassword);
+    console.log("confirmPassword", confirmPassword);
     if (oldPassword === newPassword) {
       setMatchPassword(true);
       return;
     }
+    console.log("Secondn");
     if (newPassword !== confirmPassword) {
-      setMatchPassword2(false);
+      console.log("inside");
+      setMatchPassword(false);
+      setMatchPassword2(true);
       return;
     }
+    console.log("Third");
+    setMatchPassword2(false);
     const body = {
       oldPassword: oldPassword,
       newPassword: newPassword,
@@ -56,7 +65,7 @@ const ChangePassword = () => {
     setShowPassword3(!showPassword3);
   };
 
-  // console.log("matchPassword", matchPassword);
+  console.log("matchPassword2", matchPassword2);
   return (
     <>
       <div className="log-bg">
@@ -84,21 +93,14 @@ const ChangePassword = () => {
                     {...register("oldPassword", {
                       required: true,
                       minLength: 8,
+                     
                     })}
                     isInvalid={!!errors.oldPassword}
                     value={oldPassword}
                     onChange={(e) => setOldPassword(e.target.value)}
                   />
                   <InputGroup.Text>
-                    {showPassword ? (
-                      <i className="fa fa-eye" onClick={handleShowPassword}></i>
-                    ) : (
-                      <i
-                        className="fa fa-eye-slash"
-                        aria-hidden="true"
-                        onClick={handleShowPassword}
-                      ></i>
-                    )}
+                    {showPassword ? ( <i className="fa fa-eye" onClick={handleShowPassword}></i> ) : (<i className="fa fa-eye-slash" aria-hidden="true" onClick={handleShowPassword} ></i> )}
                   </InputGroup.Text>
                   <Form.Control.Feedback type="invalid">
                     Please enter a password with at least 8 characters.
@@ -117,6 +119,8 @@ const ChangePassword = () => {
                     {...register("newPassword", {
                       required: true,
                       minLength: 8,
+                      validate: value =>
+                      value === newPassword || "Passwords do not match"
                     })}
                     isInvalid={!!errors.newPassword}
                     value={newPassword}
@@ -137,11 +141,7 @@ const ChangePassword = () => {
                       ></i>
                     )}
                   </InputGroup.Text>
-                  <Form.Control.Feedback type="invalid">
-                    {matchPassword && oldPassword
-                      ? "New password should be different from old password"
-                      : ""}
-                  </Form.Control.Feedback>
+                  <Form.Control.Feedback type="invalid">Enter the correct password</Form.Control.Feedback>
                 </InputGroup>
 
                 <FormLabel>Confirm Password</FormLabel>
@@ -155,6 +155,8 @@ const ChangePassword = () => {
                     {...register("confirmPassword", {
                       required: true,
                       minLength: 8,
+                      validate: value =>
+                      value === newPassword || "Passwords is not matching"
                     })}
                     isInvalid={!!errors.confirmPassword}
                     value={confirmPassword}
@@ -176,10 +178,8 @@ const ChangePassword = () => {
                     )}
                   </InputGroup.Text>
                 </InputGroup>
-                <Form.Control.Feedback type="invalid">
-                    {matchPassword2 && "Password should match new password"}
-                  </Form.Control.Feedback>
-              </Form.Group>
+              <Form.Control.Feedback type="invalid">Password should match new password </Form.Control.Feedback>
+                 </Form.Group>
 
               <div className="login-btn">
                 <Button type="submit">Change Password</Button>
