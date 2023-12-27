@@ -18,9 +18,9 @@ const useAccountStore = create(persist(devtools((set) => ({
             return Promise.reject({ error: error.data });
         }
     },
-    getJobSeeker: () => {
+    getJobSeeker: async () => {
         try {
-            const userDetail = Services.Account.getJobSeeker();
+            const userDetail = await Services.Account.getJobSeeker();
             set(() => ({
                 jobSeekerData: userDetail, 
             }));
@@ -31,6 +31,8 @@ const useAccountStore = create(persist(devtools((set) => ({
     
     signOut: () => {
         set(() => ({ signedInUserData: null }));
+        localStorage.removeItem('account');
+        localStorage.removeItem('token');
         // navigate('/login');
     },
 })), { name: 'account' }));

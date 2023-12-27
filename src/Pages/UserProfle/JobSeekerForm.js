@@ -15,32 +15,26 @@ import Services from '../../services/Services';
 import {  useParams } from "react-router-dom";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import useAccountStore from '../../store/useAccountStore';
 
 const JobSeekerForm = () => {
 
-  const {register,formState: { errors },handleSubmit} = useForm({ mode: 'all' });
+
   const [validated, setValidated] = useState(false);
   const {email} = useParams();
   const [data, setData] = useState('');
+  const jobSeekerData = useAccountStore((state) => state.jobSeekerData);
 
+  const defaultValues = {
+    firstName: jobSeekerData.data.firstName,
+    middleName: jobSeekerData.data.middleName,
+    lastName: jobSeekerData.data.lastName,
+    email: jobSeekerData.data.email,
+    phoneNumber: jobSeekerData.data.phoneNumber,
+    currentLocation: jobSeekerData.data.currentLocation
+  };
 
-const handleAutoFill =()=>{
-  //  const email= "akshay@yopmail.com"
-  Services.Account.getJobSeeker().then(response=>{
-    console.log(response);
-    setData(response.data)
-
-  }).catch((errors)=>{
-console.log("errors", errors.message);
-toast.error(errors.message, {
-  position: toast.POSITION.TOP_RIGHT,
-});
-  })
-}
-
-useEffect(() => {
-  handleAutoFill();
-}, []);
+  const {register,formState: { errors },handleSubmit} = useForm({ defaultValues, mode: 'all' });
 
 const handleComplete = (data) => {
   // console.log("Form completed!", data);

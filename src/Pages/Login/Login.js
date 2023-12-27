@@ -33,6 +33,7 @@ const Login = () => {
   const signInUser = useAccountStore((state) => state.signInUser);
   const signOut = useAccountStore((state) => state.signOut);
   const signedInUserData = useAccountStore((state) => state.signedInUserData);
+  const getJobSeeker = useAccountStore((state) => state.getJobSeeker);
 
   useEffect(() => {
     if (!timer) return;
@@ -93,6 +94,7 @@ const finalOtp= `${otpValue?.otp1}${otpValue?.otp2}${otpValue?.otp3}${otpValue?.
           toast.success(response.message, {
             position: toast.POSITION.TOP_RIGHT,
           });
+         getJobSeeker();
         }
       })
       .catch((errors) => {

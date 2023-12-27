@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-axios.defaults.baseURL= "https://vuesharvest-hucm-qa.chetu.com";
+axios.defaults.baseURL= "https://localhost:7069/api";
 // axios.defaults.withCredentials= true;
 
 const responseBody =(response)=> response.data;
