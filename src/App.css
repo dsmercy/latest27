@@ -1,0 +1,695 @@
+@import url('https://fonts.googleapis.com/css2?family=Alexandria:wght@100;200;300;400;500;600;700&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-green:#1DA425;
+  --bg-yellow:#FFBD13;
+  --back-color:#7AC699;
+  --link-color:#2FACED;
+  --color-white:#fff;
+  --head-font: 20px;
+  --sub-font: 16px;
+  --grey-color: #8C8585;
+}
+h1,h2,h3,h4,h5,h6 {
+  /* font-family: 'Alexandria', sans-serif; */
+  font-family: 'Alexandria', sans-serif;
+  font-family: 'Open Sans', sans-serif;
+}
+body {
+  overflow-x: hidden;
+}
+.login-btn button:hover, .search-container-btn button:hover {
+ background: var(--back-color) !important;
+
+}
+.form-check-input:checked {
+  background-color: var(--bg-green) !important;
+  border-color: var(--bg-green) !important;
+}
+.form-select:focus, .form-control:focus {
+  border-color: #42B749 !important;
+  outline: 0;
+  box-shadow: none !important;
+}
+
+.form-check-input:focus {
+  border-color: var(--link-color);
+  outline: 0;
+  box-shadow: none!important;
+}
+
+.log-bg {
+  background-image: url('./assets/images/bgimg.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  /* width:100%;
+  height:100vh; */
+}
+.log-cent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height:100vh; */
+}
+
+.log-card {
+  background: #fff;
+  width:28%;
+  flex-shrink: 0;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 40px;
+}
+.log-card h4 {
+  font-size: 24px;
+  font-weight: 700;
+}
+.remember {
+  display:flex;
+  justify-content: space-between;
+}
+.remember span button {
+  color:var(--bg-green);
+}
+.login-btn button {
+  background: var(--bg-green);
+  color: #fff;
+  width: 100%;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.log-contiune {
+  width: 100%;
+  padding: 20px 0;
+  max-width: 500px;
+  margin: 0 auto;
+}
+.log-contiune p {
+  font-size: 16px;
+  font-weight: normal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.log-contiune p:before,
+.log-contiune p:after {
+  content: "";
+  width:30%;
+  height: 1px;
+  background: #585858;
+}
+
+.log-contiune p:before{
+  margin: 0 20px 0 0;
+}
+
+.log-contiune p:after{
+  margin: 0 0 0 20px;
+}
+
+.social-icon >div {
+    background: #F0F3F6;
+    border-radius: 6px;
+    width: 52px;
+    height: 52px;
+    margin: 10px;
+    line-height: 52px;
+    text-align: center;
+    cursor: pointer;
+}
+
+
+/* ============================ Login Otp============================================ */
+
+.form-otp {
+  margin:10px;
+
+}
+.form-otp input {
+  display:inline-block;
+  width:50px;
+  height:50px;
+  text-align:center;
+  border: 1px solid #dee2e6;
+  margin-right: 4px;
+}
+.regis {
+  display:flex;
+}
+
+/*==================================== Header css ===================================*/
+
+.navbar-brand img {
+  width:200px;
+}
+.nav-bg {
+  background: #F2F9F5 !important;
+}
+.head-right {
+  display:flex;
+}
+.head-right a:first-child { 
+  padding-top: 6px;
+}
+.head-right a:last-child {
+  background: var(--bg-green);
+  padding: 6px 22px;
+  border-radius: 6px;
+  color: #fff;
+  margin: 0 20px;  
+}
+.navbar-nav {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+
+/*=========================== Footer Css =========================================*/
+footer {
+  background: #f2faf5;
+    padding-top: 48px; }
+.foot-f {
+   width:290px;
+}
+.foot-f p {
+   padding-top: 20px;
+}
+
+.social-icon .social-icon-inner {
+   width: 46px;
+   height: 46px;
+   background: #FCB854;
+   border-radius: 50%;
+   text-align: center;
+   margin-right: 10px;
+   cursor:pointer;
+}
+/* .social-icon i {
+ font-size: 18px;
+ line-height: 46px;
+ color: #fff;
+} */
+.app-icon {
+ display: flex;
+}
+.app-icon img {
+ margin: 10px 10px 0 0;
+}
+.company h5 , .services h5, .support h5 { 
+ font-size: 22px;
+ font-weight: 600;
+ padding-bottom: 20px;
+}
+.company ul , .services ul, .support ul { 
+   margin: 0 0 0 -24px;
+}
+.company ul li, .services ul li, .support ul li {
+ list-style: none;
+ padding-bottom: 10px;
+}
+.company ul li a, .services ul li a, .support ul li a {
+   text-decoration: none;
+   color:#000;
+   font-size: 20px;
+}
+.copy {
+   text-align: center;
+   padding: 20px;
+}
+
+
+/*=========================== Wizard Css =========================================*/
+
+.jobs-benefits {
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px 0 #ddd;
+  padding: 40px;
+}
+.jobs-benefits-inner {
+  display:flex;
+}
+.jobs-benefits-inner img {
+  width:20%;
+  margin-top: -28px;
+}
+
+.jobs-benefits h4 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  width:80%;
+}
+.jobs-benefits p {
+  font-size: 16px;
+}
+.jobs-benefits i {
+  color: var(--bg-green);
+  padding-right: 10px;
+}
+.wizard-header {
+  margin-top:40px;
+}
+.wizard-head {
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px 0 #ddd;
+  padding: 40px;
+}
+.wizard-head h4 {
+  font-size: 32px;
+  font-weight: 600;
+}
+.wizard-head .yourself {
+  color: var(--bg-green);
+}
+.wizard-head p {
+  font-size:20px;
+}
+
+.react-form-wizard .wizard-navigation .wizard-progress-with-circle {
+  position: relative;
+  top: 40px;
+  height: 4px;
+  background: #ddd;
+}
+.react-form-wizard .wizard-tab-content  label {
+  text-align: left !important;
+}
+.wizard-tab-content {
+  text-align: left !important;
+}
+.wizard-tab-content h5 {
+  font-size: 24px;
+}
+.bord {
+    height: 4px;
+    background: var(--bg-green);
+    width: 6%;
+    display: block;
+    margin-bottom: 20px;
+}
+.fresh {
+  border: 1px solid #000;
+  border-radius: 6px;
+  padding: 10px;
+  background: #DCF2DD;
+  border-color: var(--bg-green);
+  margin-right:10px;
+}
+
+.fresh h4 {
+  font-size: 18px;
+  font-weight: 700;
+}
+.fresh p {
+  font-size: 16px;
+}
+.fresh-second {
+  border: 1px solid #000;
+  border-radius: 6px;
+  padding: 10px;
+  border-color: #75808B;
+  margin-right:10px;
+}
+.fresh-second h4 {
+  font-size: 18px;
+  font-weight: 700;
+}
+.fresh-second p {
+  font-size: 16px;
+}
+.current-empl {
+  margin: 20px 0;
+}
+.current-empl h5 {
+  font-size: 16px;
+}
+.current-empl input {
+  padding: 4px;
+}
+.current-empl label {
+  font-size: 16px;
+  padding: 0 10px;
+}
+.current-salary {
+  margin: 20px 0;
+}
+.current-salary h5 {
+  font-size: 16px;
+}
+.current-salary input {
+  padding: 4px;
+}
+.current-salary label {
+  font-size: 16px;
+  padding: 0 10px;
+}
+.add-position {
+  color: var(--bg-green);
+  cursor: pointer;
+}
+.add-position h4 {
+  font-size: 18px;
+}
+.job-type {
+  margin-bottom: 20px;
+}
+.job-type h5 {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+.job-type label {
+  font-size: 16px;
+  padding: 0 10px;
+}
+.job-type input {
+  padding: 4px;
+}
+.react-form-wizard.md .wizard-icon-circle {
+  width: 40px !important;
+  height: 40px !important;
+  font-size: 16px !important;
+  margin-top: 14px !important;
+}
+.react-form-wizard .wizard-header {
+  padding: 0 !important;
+}
+/* .wizard-progress-with-circle { 
+   width: 576px;
+  margin-left: 82px;
+} */
+
+/*================ Employee dashboard ==============================*/
+
+ .employee-dashboard h5 {
+  margin: 20px;
+  font-size: 18px;
+  color: #aba0a0;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+ .search-container {
+   border-radius: 50px;
+   background: #fff;
+   box-shadow: 0px 2px 6px 2px rgba(0, 0, 0, 0.10);
+   width: 100%;
+   flex-shrink: 0;
+   display: flex;
+   padding: 14px;
+   align-items: center;
+   margin-bottom: 20px;
+ }
+ .search-container i {
+   position: absolute;
+   margin: 6px;
+   font-size: 20px;
+   color: #595c8d;
+ }
+  .search-container .form-control, .search-container .form-select {
+   border-right: 1px solid #ddd !important;
+   border-top: none !important;
+   border-left: none !important;
+   border-bottom: none !important;
+   border-radius:0px !important
+ }
+ .search-container ::placeholder {
+   font-size: 18px;
+ }
+ /*.search-container-btn {
+    float: inline-end;
+ } */
+  .search-container-btn button {
+   background: var(--bg-green);
+   color: var(--color-white);
+   padding: 6px 28px;
+ }
+ .search-filter {
+   display: flex;
+   margin: 20px;
+ }
+ .search-filter select {
+   margin: 10px;
+ }
+ .employee-left-side {
+    min-height: 400px;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 6px;
+    box-shadow: 0 2px 2px 0 #ddd;
+    margin-bottom: 20px;
+ }
+ .job-card {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 12px;
+    margin-bottom: 20px;
+ }
+ .job-card i {
+  font-size: 40px;
+  color: #fff;
+  float: right;
+  padding: 14px 0;
+  }
+ .applied-card {
+  background: #D2E7FB;
+ }
+ .saved-card {
+   background: #C8F4EF;
+ }
+ .resume-card {
+   background: #F6EBE6;
+ }
+ .john-smith h4 {
+  font-size: 18px;
+  font-weight: 600;
+ }
+ .john-smith p {
+  font-size: 14px;
+ }
+
+.dash-missing {
+  background: #F0F6FB;
+  padding: 10px;
+  margin: 20px 0;
+  border-radius: 6px;
+}
+.dash-missing h4 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.dash-missing p {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+.dash-missing i {
+  color:var(--bg-green);
+}
+
+.dash-menu ul {
+   margin: 0;
+   padding: 0;
+}
+
+.dash-menu ul > li { 
+  list-style: none;
+  font-size: 18px;  
+  font-weight: 600; 
+  padding: 4px;
+  color:#625D5D;
+  margin-bottom: 10px;
+}
+.dash-menu ul li i {
+  padding: 0 10px;
+}
+.dash-menu ul > li span { 
+  float: right;
+  color:var(--bg-green);
+  font-weight: 600;
+  padding: 0 10px;
+}
+.dash-menu .active {
+  background: #EEEDED;
+  padding: 4px;
+  border-radius: 6px;
+}
+.resume-view {
+  border-top:1px solid #ddd;
+}
+.resume-view input {
+  margin-top:10px
+}
+.dash-side-img {
+  padding: 10px;
+}
+.match-job {
+  display: flex;
+  justify-content: space-between;
+}
+.match-job span {
+  color: var(--bg-green);
+}
+.match-job p {
+  color: var(--link-color);
+  cursor: pointer;
+}
+.visual-card {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+.visual-card .fa-star {
+  color: #FFC524;
+}
+.visual-card  p {
+  padding-left: 40px; 
+}
+.dash-desc p {
+  padding-left: 0; 
+}
+.dash-prog .progress {
+  margin: 12px 0;
+}
+.visual-card .fa-bookmark-o {
+  float: right;
+  color: var(--link-color);
+  font-size: 18px;
+}
+.visual-card h4 {
+  color:var(--grey-color);
+}
+.visual-card h5 {
+  margin: 20px 0;
+  font-weight: 400;
+}
+.visual-card span {
+  padding-right: 20px;
+  color: var(--grey-color);
+}
+.visual-card span i {
+  padding-right: 10px;
+}
+.visual-card p:last-child {
+  padding:20px 0;
+  color: var(--grey-color);
+}
+.complete-profile button {
+    background: var(--bg-green);
+    color: var(--color-white);
+}
+.complete-profile button:hover {
+  background: var(--back-color);
+}
+.apply-now button {
+  background: var(--bg-green);
+  color: var(--color-white);
+}
+.apply-now {
+  float: right;
+}
+.apply-now button:hover {
+  background: var(--back-color);
+}
+.volunteer {
+  /* background-image: url('./assets/images/Group 41743.png'); */
+  background-repeat: no-repeat;
+  height:340px;
+  border: 1px solid #ddd;
+  width: 100%;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.volunteer-inner {
+  background: var(--back-color);
+  padding: 20px;
+  border-radius: 6px;
+  text-align: center;
+}
+.volunteer-inner h4 {
+  font-size: 24px;
+  font-weight: 700;
+}
+.volunteer-inner p {
+  font-size: 20px;
+}
+.volunteer-inner button {
+  background: #E2BB62;
+}
+.volunteer-inner button:hover {
+  border: 1px solid #E2BB62;
+}
+.download-app {
+  background: var(--back-color);
+  width: 100%;
+  height: 240px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.download-app h4  {
+  font-size: 24px;
+  font-weight: 700;
+}
+.download-app p  {
+  font-size: 20px;
+}
+.download-app h5  {
+  font-size: 18px;
+  font-weight: 400;
+  color: #000;
+}
+.download-app img  {
+  width: 120px;
+  margin: 0 10px;
+}
+
+/*================ Searcch result css ==============================*/
+
+.search-bread {
+  position: relative;
+  width: 100%;
+  height: 12em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-bread .image {
+  width: 100%;
+  height: 100%;
+}
+
+.search-bread:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 12em;
+  background: rgba(0,0,0, 0.8);
+}
+.text {
+  font-family: Arial;
+  font-size: 2em;
+  color: var(--color-white);
+  text-shadow: 0.1em 0.1em 0.5em rgba(0,0,0,0.5);
+  margin: 0;
+  position: absolute;
+}

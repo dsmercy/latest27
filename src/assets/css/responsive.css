@@ -1,0 +1,47 @@
+@media (max-width: 500px) {
+    .form-check-inline {
+        margin-top:40px;
+    }
+    .demand-inner {
+     width:100%;
+    }
+    .job-title {
+        height: 260px;
+        padding: 20px;
+        text-align: center;
+        align-items: stretch;
+    }
+    .flt button {
+        float:none;
+    }
+    .first-card, .second-card, .third-card, .fourth-card {
+        height: 220px;
+    }
+    .first-card, .second-card, .third-card, .fourth-card {
+        background-size: 100% 100%;
+        margin-bottom: -32px;
+    }
+    .first-card h4, .third-card h4 {
+        top: 88px;
+        left: 25%;
+        font-size: 22px;
+    }
+    .first-card p, .third-card p {
+        top: 118px;
+        left: 25%;
+        font-size: 14px;
+        width: 60%;
+    }
+    .second-card h4, .fourth-card h4 {
+        top: 60px;
+        left: 30%;
+        font-size: 22px;
+    }
+    .second-card p, .fourth-card p {
+        position: absolute;
+        top: 98px;
+        left: 25%;
+        font-size: 14px;
+        width: 60%;
+    }
+  }
